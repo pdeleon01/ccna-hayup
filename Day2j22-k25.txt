@@ -116,6 +116,89 @@ ip dhcp pool _____.com
   swi Voice vlan 25
   do sh ip dhcp binding
 
+TemPlate_CoreSW:
+@D1
+config t
+vlan 25
+ name TASKUS.com
+ exit
+Int vlan 25
+ no shut
+ ip add 10.0.32.1 255.255.224.0
+ip dhcp excluded-add 10.0.32.1 10.0.32.100
+ip dhcp pool TASKUS.com
+ network 10.0.32.0 255.255.224.0
+ default-router 10.0.32.1
+ domain-name TASKUS.com
+ dns-server 10.12.1.10
+ option 150 ip 10.12.100.8
+ Int E 1/0
+swi Mode Access
+  swi access vlan 25
+  do sh ip dhcp binding
+@S1:
+config t
+int e1/0
+no shut
+ip address dhcp
+do bp
+
+@D1:
+config t
+vlan 26
+ name ETELECAREnaga.com
+ exit
+Int vlan 26
+ no shut
+ ip add 10.0.4.1 255.255.252.0
+ip dhcp excluded-add 10.0.4.1 10.0.4.100
+ip dhcp pool ETELECAREnaga.com
+ network 10.0.4.1 255.255.252.0
+ default-router 10.0.4.1
+ domain-name ETELECAREnaga.com
+ dns-server 10.12.1.10
+ option 150 ip 10.12.100.8
+@D2 coreSW
+config t
+Int E 1/0
+swi Mode Access
+  swi access vlan 26
+  do sh ip dhcp binding
+@S2:
+config t
+int e1/0
+no shut
+ip address dhcp
+do bp
+
+@D1: FOUNDEVER.COM DHCP SUBNETTING CONGIFS:
+config t
+vlan 28
+ name FOUNDEVER.COM
+ exit
+Int vlan 28
+ no shut
+ ip add 10.0.8.1 255.255.248.0
+ip dhcp excluded-add 10.0.8.1 10.0.8.100
+ip dhcp pool FOUNDEVER.COM
+ network 10.0.8.0 255.255.248.0
+ default-router 10.0.8.1
+ domain-name FOUNDEVER.COM
+ dns-server 10.12.1.10
+ option 150 ip 10.12.100.8
+@a2 access switch
+config t
+Int E1/0
+swi Mode Access
+  swi access vlan 28
+  do sh ip dhcp binding
+@P2:
+config t
+int e1/0
+no shut
+ip address dhcp
+do bp
+
 Ex.5.3: Compute and Configure SYKESASIA.com
 call center with 388 Agents,Tls,QAs,Pm. using
 10.0.0.0/8:
