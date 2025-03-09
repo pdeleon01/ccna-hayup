@@ -6,7 +6,7 @@ Day3 Network Engineer
 3.1.d Next hop
 3.1.e Administrative distance
 3.1.f Metric
-3.1.g Gateway of last resort
+3.1.g Gateway of last resort[cisco vs default gateway [microsoft] vs default GW [linux] 0.0.0.0 0.0.0.0/ /0
 
 3.2 Determine how a router makes a forwarding decision by default
 3.2.a Longest prefix match
