@@ -248,7 +248,7 @@ Switch:  flash_init
 TASK5: HOW TO SPOT A VERY HEALTHY SWITCH?
 super healthy: "all flashing green."
 amber/orange: needs help. - you are protected
-
+##how to legally steal your Expensive Cisco
 create vlans,
 transfer ports to vlans
 delete the vlan
@@ -490,7 +490,7 @@ config t
 hostname PLDT-ITO
 Track 1 Int gi 0/1 line-protocol
 Int vlan 1
-standby 1 ip 10.__.1.6
+standby 1 ip 10.12.1.6
 standby 1 preempt
 standby 1 Priority 150
 standby 1 Track 1 decrement 60
@@ -508,7 +508,7 @@ COREBABA/GLOBE:
 config t
 hostname GLOBE-ITO
 Int vlan 1
-standby 1 ip 10.__.1.6
+standby 1 ip 10.12.1.6
 standby 1 preempt
 standby 1 Priority 100
 end
